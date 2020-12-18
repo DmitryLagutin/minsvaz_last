@@ -1,12 +1,10 @@
 {% extends "base.html" %}
-
 {% block content %}
 <br>
 <div class="content">
     <div class="container">
         <div class="alert alert-danger" role="alert">Вы не ввели одну из дат, необходимых для рассчета</div>
+        <a class="btn btn-primary" href="{{url_for('hello')}}" role="button">Ввести данные снова</a>
     </div>
 </div>
-
-
 {% endblock %}

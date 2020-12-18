@@ -8,49 +8,17 @@ app = Flask(__name__)
 def hello():
     if request.method == 'GET':
         return render_template('index.html')
-        # return '''
-        #     <form action="" method="post">
-        #             <p><input type=text name=first_date></p>
-        #             <p><input type=text name=last_date></p>
-        #             <p><input type=submit value=Calculate>
-        #         </form>
-        #     '''
     elif request.method == 'POST':
-        print(request)
         first_date = request.form['first_date']
         last_date = request.form['last_date']
         if first_date is '' or last_date is '':
             return render_template('not_date.html')
-        print(first_date, last_date)
         x = first_date.split('T')
         y = last_date.split('T')
         first_date = x[0] + ' ' + x[1] + ':00'
         last_date = y[0] + ' ' + x[1] + ':00'
-        print(first_date, last_date)
         agents = main_function(first_date, last_date)
         return render_template('good_calculate.html', agents=agents)
-
-  #       '''
-  #       <html>
-  #         <head>
-  #           <title>Home Page</title>
-  #           <style type="text/css">
-  #  table {
-  #   background: black; /* Цвет фона таблицы */
-  #   color: black; /* Цвет текста */
-  #  }
-  #  TD {
-  #   background: grey; /* Цвет фона ячеек */
-  #  }
-  # </style>
-  #         </head>
-  #         <body>
-  #         <div>
-  #            ''' + x + '''
-  #         </div>
-  #         </body>
-  #       </html>
-  #       '''
 
 
 if __name__ == "__main__":

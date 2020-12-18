@@ -4,8 +4,6 @@ import csv
 import ipaddress
 from prettytable import PrettyTable
 
-# first_date = '2020-01-01 00:00:00'
-# last_date = '2020-12-01 00:00:00'
 
 main_list = []
 connection = pymysql.connect(host='dbi20.flexline.ru',
@@ -24,14 +22,11 @@ def main_function(first_date, last_date):
         '''
         list_result = []
         cursor.execute(sql)
-        x = PrettyTable()
-        x.field_names = ['count ip', 'in traffic (Gb)',
-                         'out traffic (Gb)', 'id']
-
+        # x = PrettyTable()
+        # x.field_names = ['count ip', 'in traffic (Gb)',
+        #                  'out traffic (Gb)', 'id']
         for row in cursor:
-            list_result.append([row['count(day.ip)'],
-                                row['sum(day.cin)/1024/1024/1024'],
-                                row['sum(day.cout)/1024/1024/1024'],
-                                row['id']])
-        x.add_rows(list_result)
-        return x.get_html_string()
+            list_result.append(dict(count_ip=row['count(day.ip)'], sum_in=row['sum(day.cin)/1024/1024/1024'],
+                                    sum_out=row['sum(day.cout)/1024/1024/1024'], id=row['id']))
+
+        return list_result
