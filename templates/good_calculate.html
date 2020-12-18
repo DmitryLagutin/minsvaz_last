@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="content">
+    <div class="container">
+        <h2>Результаты расчета</h2>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>count ip</th>
+                <th>in traffic (Gb)</th>
+                <th>out traffic (Gb)</th>
+                <th>id</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for agent in agents %}
+            <tr>
+                <td>{{agent[0]}}</td>
+                <td>{{agent[1]}}</td>
+                <td>{{agent[2]}}</td>
+                <td>{{agent[3]}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<table>
+    <thead>
+    <tr>
+        <th>count ip</th>
+        <th>in traffic (Gb)</th>
+        <th>out traffic (Gb)</th>
+        <th>id</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>45586</td>
+        <td>15492.910277616233</td>
+        <td>5204.383681478910</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>86737</td>
+        <td>12251.339625959285</td>
+        <td>4503.652662053704</td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <td>259637</td>
+        <td>724645.858959241770</td>
+        <td>309806.086135068908</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>85809</td>
+        <td>21439.931525069289</td>
+        <td>17824.191778905690</td>
+        <td>18</td>
+    </tr>
+    <tr>
+        <td>258008</td>
+        <td>297155.496225374751</td>
+        <td>263920.323744094931</td>
+        <td>20</td>
+    </tr>
+    <tr>
+        <td>257561</td>
+        <td>107771.938084172085</td>
+        <td>135653.034465418197</td>
+        <td>21</td>
+    </tr>
+    <tr>
+        <td>182686</td>
+        <td>182449.757296161726</td>
+        <td>110609.873294122517</td>
+        <td>22</td>
+    </tr>
+    <tr>
+        <td>101993</td>
+        <td>175712.645761471242</td>
+        <td>144631.654119331390</td>
+        <td>23</td>
+    </tr>
+    </tbody>
+</table>
+
+{% endblock %}
