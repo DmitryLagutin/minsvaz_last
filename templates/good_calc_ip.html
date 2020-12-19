@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content">
+    <div class="container">
+        <h2>Результаты расчета для IP - адреса: {{ip}}</h2>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>login</th>
+                <th>current shape</th>
+                <th>in traffic (Gb)</th>
+                <th>out traffic (Gb)</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in rows %}
+            <tr>
+                <td>{{row.login}}</td>
+                <td>{{row.current_shape}}</td>
+                <td>{{row.sum_in}}</td>
+                <td>{{row.sum_out}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
