@@ -1,77 +1,46 @@
 from prettytable import from_db_cursor
+from flask import Flask, request, session, redirect, url_for, render_template
 import pymysql.cursors
+from settings import sql_index, sql_ip, sql_login, host, user, password, db
 import csv
 import ipaddress
 from prettytable import PrettyTable
 
 main_list = []
-connection = pymysql.connect(host='dbi20.flexline.ru',
-                             user='sormuser',
-                             password='proxy',
-                             db='lbilling19',
+connection = pymysql.connect(host=host,
+                             user=user,
+                             password=password,
+                             db=db,
                              cursorclass=pymysql.cursors.DictCursor)
 
 
 def main_function(first_date, last_date):
-    with connection.cursor() as cursor:
-        sql = f'''
-        select count(day.ip), sum(day.cin)/1024/1024/1024, sum(day.cout)/1024/1024/1024, day.id
-        from day where
-        day.timefrom >= "{first_date}" and day.timefrom < "{last_date}" group by day.id;
-        '''
-        list_result = []
-        cursor.execute(sql)
-        # x = PrettyTable()
-        # x.field_names = ['count ip', 'in traffic (Gb)',
-        #                  'out traffic (Gb)', 'id']
-        for row in cursor:
-            list_result.append(dict(count_ip=row['count(day.ip)'], sum_in=row['sum(day.cin)/1024/1024/1024'],
-                                    sum_out=row['sum(day.cout)/1024/1024/1024'], id=row['id']))
-
-        return list_result
+    return basic_func(sql_index(first_date, last_date))
 
 
 def for_ip_func(ip, first_date, last_date):
-    with connection.cursor() as cursor:
-        sql = f'''
-                select 
-                v.login, v.current_shape, sum(d.cin)/1024/1024/1024, sum(d.cout)/1024/1024/1024
-                from day d
-                inner join vgroups v on (d.vg_id=v.vg_id)
-                inner join staff st on (v.vg_id=st.vg_id)
-                where
-                st.segment=inet_aton("{ip}") and
-                d.timefrom >= "{first_date}" and d.timefrom < "{last_date}";
-                '''
-        list_result = []
-        cursor.execute(sql)
-        for row in cursor:
-            print(dict(row))
-            list_result.append(dict(login=row['login'], current_shape=row['current_shape'],
-                                    sum_in=row['sum(d.cin)/1024/1024/1024'],
-                                    sum_out=row['sum(d.cout)/1024/1024/1024']))
-
-        return list_result
+    return basic_func(sql_ip(ip, first_date, last_date))
 
 
 def for_login_func(login, first_date, last_date):
-    with connection.cursor() as cursor:
-        sql = f'''
-            select 
-            v.login, v.current_shape, sum(d.cin)/1024/1024/1024, sum(d.cout)/1024/1024/1024
-            from day d
-            inner join vgroups v on (d.vg_id=v.vg_id)
-            inner join staff st on (v.vg_id=st.vg_id)
-            where
-            v.login="{login}" and 
-            d.timefrom >= "{first_date}" and d.timefrom < "{last_date}";
-            '''
-        list_result = []
-        cursor.execute(sql)
-        for row in cursor:
-            print(dict(row))
-            list_result.append(dict(login=row['login'], current_shape=row['current_shape'],
-                                    sum_in=row['sum(d.cin)/1024/1024/1024'],
-                                    sum_out=row['sum(d.cout)/1024/1024/1024']))
+    return basic_func(sql_login(login, first_date, last_date))
 
-        return list_result
+
+def basic_func(sql_str):
+    connection.ping()
+    try:
+        with connection.cursor() as cursor:
+            sql = sql_str
+            list_result = []
+            cursor.execute(sql)
+            for row in cursor:
+                list_keys = list(dict(row).keys())
+                list_result.append(dict(id_0=row[list_keys[0]], id_1=row[list_keys[1]],
+                                        id_2=row[list_keys[2]], id_3=row[list_keys[3]]))
+
+            return list_result
+    except Exception as ex:
+        print(str(ex))
+        return render_template('error.html')
+    finally:
+        cursor.close()

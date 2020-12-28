@@ -1,6 +1,6 @@
 from flask import Flask, request, session, redirect, url_for, render_template
 import pymysql.cursors
-from helper import main_function, for_ip_func, for_login_func
+from helper import main_function, for_ip_func, for_login_func, connection
 
 app = Flask(__name__)
 
@@ -12,13 +12,12 @@ def index():
     elif request.method == 'POST':
         first_date = request.form['first_date']
         last_date = request.form['last_date']
-        print(first_date, last_date)
         if first_date is '' or last_date is '':
             return render_template('not_date.html')
         first_date = first_date + ' ' + '00:00:00'
         last_date = last_date + ' ' + '00:00:00'
-        agents = main_function(first_date, last_date)
-        return render_template('good_calculate.html', agents=agents)
+        rows = main_function(first_date, last_date)
+        return render_template('good_calculate.html', rows=rows)
 
 
 @app.route("/for_ip", methods=['GET', 'POST'])
@@ -29,7 +28,6 @@ def for_ip():
         ip = request.form['ip']
         first_date = request.form['first_date']
         last_date = request.form['last_date']
-        print(first_date, last_date, ip)
         if first_date is '' or last_date is '' or ip is '':
             return render_template('not_date.html')
         first_date = first_date + ' ' + '00:00:00'
@@ -46,7 +44,6 @@ def for_login():
         login = request.form['login']
         first_date = request.form['first_date']
         last_date = request.form['last_date']
-        print(first_date, last_date, login)
         if first_date is '' or last_date is '' or login is '':
             return render_template('not_date.html')
         first_date = first_date + ' ' + '00:00:00'
@@ -56,4 +53,4 @@ def for_login():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

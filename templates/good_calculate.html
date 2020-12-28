@@ -13,12 +13,12 @@
             </tr>
             </thead>
             <tbody>
-            {% for agent in agents %}
+            {% for row in rows %}
             <tr>
-                <td>{{agent.count_ip}}</td>
-                <td>{{agent.sum_in}}</td>
-                <td>{{agent.sum_out}}</td>
-                <td>{{agent.id}}</td>
+                <td>{{row.id_0}}</td>
+                <td>{{row.id_1}}</td>
+                <td>{{row.id_2}}</td>
+                <td>{{row.id_3}}</td>
             </tr>
             {% endfor %}
             </tbody>
