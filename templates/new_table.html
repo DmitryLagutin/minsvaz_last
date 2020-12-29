@@ -1,0 +1,341 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="content">
+    <div class="container">
+        <h2>Актуальные настройки Интернет</h2>
+        <table class="table table-bordered">
+            <tr style="text-align:center;font-weight:bold;background: lightgray;border-top:2px solid black;">
+			<td colspan="12">ФЛЕКСЛАЙН-Н</td>
+		</tr>
+		<tr style="text-align:center;font-weight:bold;border-top:2px solid black;">
+			<td> Маршрутизатор</td>
+			<td> ID Агента </td>
+			<td> Расположение </td>
+			<td> Сеть </td>
+			<td> Vlan </td>
+			<td> Диапазон адресов </td>
+			<td> Маска </td>
+			<td> Шлюз </td>
+			<td colspan="2">ДНС</td>
+			<td> Заявка </td>
+			<td> Суффикс УЗ </td>
+		</tr>
+		<tr style="text-align:center;border-top:2px solid black;">
+			<th rowspan="2">gw-v2 </th>
+			<th rowspan="2">6</th>
+			<td rowspan="2">Вегас 2 (65км МКАД)<br />Вегас Сити Холл<br />Бокс-сити</td>
+			<td>185.30.195.0/24 </td>
+			<td>701</td>
+			<td>185.30.195.2-254</td>
+			<td>255.255.255.0 </td>
+			<td>185.30.195.1 </td>
+			<td rowspan="2">185.30.195.2 </td>
+			<td rowspan="2">185.30.192.2 </td>
+			<td>#3530</td>
+			<td rowspan="2">cv, cs</td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>185.30.194.0/24 </td>
+			<td>702</td>
+			<td>185.30.194.6-254 </td>
+			<td>255.255.255.0 </td>
+			<td>185.30.194.1 </td>
+			<td>#6684</td>
+		</tr>
+		<tr style="text-align:center;border-top:2px solid black;">
+			<th rowspan="3">gw-td65 </th>
+			<th rowspan="3">22</th>
+			<td>Молл-арендаторы (65км МКАД)</td>
+			<td>195.28.54.0/24 </td>
+			<td>4</td>
+			<td>195.28.54.6-254 </td>
+			<td>255.255.255.0 </td>
+			<td>195.28.54.1 </td>
+			<td rowspan="3">185.30.195.2 </td>
+			<td rowspan="3">185.30.192.2 </td>
+			<td rowspan="2">#5482</td>
+			<td rowspan="3">cs </td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>"Твой Дом" (65км МКАД)</td>
+			<td>195.28.55.0/24 </td>
+			<td>5</td>
+			<td>195.28.55.6-254 </td>
+			<td>255.255.255.0 </td>
+			<td>195.28.55.1 </td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>"Твой Дом" для АСУ 65км МКАД</td>
+			<td>195.28.49.32/27 </td>
+			<td>707</td>
+			<td>195.28.49.34-62 </td>
+			<td>255.255.255.224 </td>
+			<td>195.28.49.33 </td>
+			<td>#4701</td>
+		</tr>
+		<tr style="text-align:center;border-top:2px solid black;">
+			<th rowspan="4">gw-expo </th>
+			<th rowspan="4">23</th>
+			<td>Экспо-арендаторы (65км МКАД)<br />Метромост</td>
+			<td rowspan="2">195.28.50.0/24 </td>
+			<td rowspan="2">14</td>
+			<td>195.28.50.10-128 </td>
+			<td rowspan="2">255.255.255.0 </td>
+			<td rowspan="2">195.28.50.1 </td>
+			<td rowspan="4">185.30.195.2 </td>
+			<td rowspan="4">185.30.192.2 </td>
+			<td rowspan="2">#5433</td>
+			<td rowspan="4">cs </td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>Экспо Барышников</td>
+			<td>195.28.50.129-254 </td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>Крокус удаленные объекты</td>
+			<td>195.28.49.64/28 </td>
+			<td>24</td>
+			<td>195.28.49.66-78 </td>
+			<td>255.255.255.240 </td>
+			<td>195.28.49.65 </td>
+			<td>#5592</td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>Экспо (65км МКАД) АСУ</td>
+			<td>195.28.49.0/27 </td>
+			<td>705</td>
+			<td>195.28.49.2-30 </td>
+			<td>255.255.255.224 </td>
+			<td>195.28.49.1 </td>
+			<td>#4818</td>
+		</tr>
+		<tr style="text-align:center;border-top:2px solid black;">
+			<th rowspan="3">gw-v1 </th>
+			<th rowspan="3">20</th>
+			<td>Вегас 1 (24км МКАД) </td>
+			<td>195.28.51.0/24 </td>
+			<td>7</td>
+			<td>195.28.51.6-254 </td>
+			<td>255.255.255.0 </td>
+			<td>195.28.51.1 </td>
+			<td rowspan="3">185.30.195.2 </td>
+			<td rowspan="3">185.30.192.2 </td>
+			<td rowspan="3">#4691</td>
+			<td rowspan="3">cx </td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>Вегас 1 (24км МКАД) </td>
+			<td>195.28.52.0/24 </td>
+			<td>108</td>
+			<td>195.28.52.6-254 </td>
+			<td>255.255.255.0 </td>
+			<td>195.28.52.1 </td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>"Твой Дом" (24км МКАД) </td>
+			<td>195.28.53.0/24 </td>
+			<td>4</td>
+			<td>195.28.53.6-254 </td>
+			<td>255.255.255.0 </td>
+			<td>195.28.53.1 </td>
+		</tr>
+		<tr style="text-align:center;border-top:2px solid black;">
+			<th rowspan="3">gw-v3 </th>
+			<th rowspan="3">21</th>
+			<td rowspan="3">Вегас 3 (Кунцево)<br />Твой Дом (55км МКАД)</td>
+			<td>195.28.60.0/24 </td>
+			<td>760</td>
+			<td>195.28.60.11-254 </td>
+			<td>255.255.255.0 </td>
+			<td>195.28.60.1 </td>
+			<td rowspan="3">185.30.192.2 </td>
+			<td rowspan="3">185.30.195.2 </td>
+			<td rowspan="3">#9012</td>
+			<td rowspan="3">kv </td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>195.28.61.0/24 </td>
+			<td>761</td>
+			<td>195.28.61.11-254 </td>
+			<td>255.255.255.0 </td>
+			<td>195.28.61.1 </td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>195.28.62.0/24 </td>
+			<td>762</td>
+			<td>195.28.62.11-254 </td>
+			<td>255.255.255.0 </td>
+			<td>195.28.62.1 </td>
+		</tr>
+		<tr style="text-align:center;border-top:2px solid black;">
+			<th>gw-riga </th>
+			<th>18</th>
+			<td>"Твой Дом" Новая Рига </td>
+			<td>195.28.56.0/24 </td>
+			<td>713</td>
+			<td>195.28.56.10-254 </td>
+			<td>255.255.255.0 </td>
+			<td>195.28.56.1 </td>
+			<td>185.30.192.2 </td>
+			<td>185.30.195.2 </td>
+			<td>#6157</td>
+			<td> nr </td>
+		</tr>
+		<tr style="text-align:center;border-top:2px solid black;">
+			<th>gw-ost </th>
+			<th>6</th>
+			<td>"Твой Дом" Осташка </td>
+			<td>185.30.193.0/24 </td>
+			<td>703</td>
+			<td>185.30.193.10-254 </td>
+			<td>255.255.255.0 </td>
+			<td>185.30.193.1 </td>
+			<td>185.30.195.2 </td>
+			<td>185.30.192.2 </td>
+			<td>#4319</td>
+			<td> os</td>
+		</tr>
+		<tr style="text-align:center;border-top:2px solid black;">
+			<th rowspan="5">gw-nat </th>
+			<th rowspan="5">6</th>
+			<td>Серые адреса (65км МКАД)</td>
+			<td>172.16.66.0/24 </td>
+			<td>1666</td>
+			<td>172.16.66.6-251 </td>
+			<td>255.255.255.0 </td>
+			<td>172.16.66.254 </td>
+			<td rowspan="5">185.30.195.2 </td>
+			<td rowspan="5">185.30.192.2 </td>
+			<td rowspan="5">#10264</td>
+			<td rowspan="5">cs, cx, kv, nr, os </td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>Серые адреса (24км МКАД) </td>
+			<td>172.16.24.0/24 </td>
+			<td>1624</td>
+			<td>172.16.24.6-251 </td>
+			<td>255.255.255.0 </td>
+			<td>172.16.24.254 </td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>Серые адреса (55км МКАД) </td>
+			<td>172.16.55.0/24 </td>
+			<td>1655</td>
+			<td>172.16.55.11-251 </td>
+			<td>255.255.255.0 </td>
+			<td>172.16.55.1 </td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>Серые адреса (9км Новорижского ш.) </td>
+			<td>172.16.9.0/24 </td>
+			<td>1609</td>
+			<td>172.16.9.6-251 </td>
+			<td>255.255.255.0 </td>
+			<td>172.16.9.1 </td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>Серые адреса (91км МКАД) </td>
+			<td> 172.16.91.0/24 </td>
+			<td>1691</td>
+			<td>172.16.91.3-254 </td>
+			<td>255.255.255.0 </td>
+			<td>172.16.91.1 </td>
+		</tr>
+		<tr style="text-align:center;font-weight:bold;background: lightgray;border-top:2px solid black;">
+			<td colspan="12">Ростелеком</td>
+		</tr>
+		<tr style="text-align:center;border-top:2px solid black;">
+			<th>gw65 </th>
+			<th>22</th>
+			<td> Не используется (Резерв) </td>
+			<td>84.253.67.0/24 </td>
+			<td>714</td>
+			<td> 84.253.67.2-254 </td>
+			<td>255.255.255.0 </td>
+			<td>84.253.67.129 </td>
+			<td>77.37.251.33 </td>
+			<td> 77.37.255.30 </td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr style="text-align:center;font-weight:bold;background: lightgray;border-top:2px solid black;">
+			<td colspan="12">Квант телеком</td>
+		</tr>
+		<tr style="text-align:center;border-top:2px solid black;">
+			<th rowspan="3">gw-vrn </th>
+			<th rowspan="3">3</th>
+			<td rowspan="3">Твой Дом Воронеж </td>
+			<td>93.157.149.168/29 </td>
+			<td>9</td>
+			<td>93.157.149.170-174 </td>
+			<td>255.255.255.248 </td>
+			<td>93.157.149.169 </td>
+			<td rowspan="3">91.195.126.65 </td>
+			<td rowspan="3">91.195.127.65</td>
+			<td rowspan="3"></td>
+			<td rowspan="3">v</td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>93.157.146.0/25 </td>
+			<td>9</td>
+			<td>93.157.146.2-126 </td>
+			<td>255.255.255.128 </td>
+			<td>93.157.146.1 </td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>172.16.36.0/24 </td>
+			<td>636</td>
+			<td>172.16.36.2-254 </td>
+			<td>255.255.255.0 </td>
+			<td>172.16.36.1 </td>
+		</tr>
+		<tr style="text-align:center;font-weight:bold;background: lightgray;border-top:2px solid black;">
+			<td colspan="12">Макомнет</td>
+		</tr>
+		<tr style="text-align:center;border-top:2px solid black;">
+			<th rowspan="5">gw-macomnet </th>
+			<th rowspan="5">4</th>
+			<td rowspan="5">Крокус Экспо (65 км) </td>
+			<td>172.16.67.0/24 </td>
+			<td>605</td>
+			<td>172.16.67.2-254 </td>
+			<td>255.255.255.0 </td>
+			<td>172.16.67.1 </td>
+			<td rowspan="5">212.5.66.14 </td>
+			<td rowspan="5">212.5.64.43</td>
+			<td rowspan="5"></td>
+			<td rowspan="5"></td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>87.118.207.0/26 </td>
+			<td>601</td>
+			<td>87.118.207.2-62 </td>
+			<td>255.255.255.192 </td>
+			<td>87.118.207.1 </td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>87.118.207.64/26 </td>
+			<td>602</td>
+			<td>87.118.207.66-126 </td>
+			<td>255.255.255.192 </td>
+			<td>87.118.207.65 </td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>87.118.207.128/26 </td>
+			<td>603</td>
+			<td>87.118.207.130-192 </td>
+			<td>255.255.255.192 </td>
+			<td>87.118.207.129 </td>
+		</tr>
+		<tr style="text-align:center;">
+			<td>87.118.207.192/26 </td>
+			<td>604</td>
+			<td>87.118.207.194-254 </td>
+			<td>255.255.255.192 </td>
+			<td>87.118.207.193 </td>
+		</tr>
+        </table>
+    </div>
+</div>
+{% endblock %}

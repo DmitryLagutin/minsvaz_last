@@ -17,7 +17,8 @@ def index():
         first_date = first_date + ' ' + '00:00:00'
         last_date = last_date + ' ' + '00:00:00'
         rows = main_function(first_date, last_date)
-        return render_template('good_calculate.html', rows=rows)
+        return render_template('good_calculate.html', rows=rows,
+                               first_date=first_date, last_date=last_date)
 
 
 @app.route("/for_ip", methods=['GET', 'POST'])
@@ -33,7 +34,9 @@ def for_ip():
         first_date = first_date + ' ' + '00:00:00'
         last_date = last_date + ' ' + '00:00:00'
         rows = for_ip_func(ip, first_date, last_date)
-        return render_template('good_calc_ip.html', rows=rows, ip=ip)
+        return render_template('good_calc_ip.html', rows=rows,
+                               ip=ip, first_date=first_date,
+                               last_date=last_date)
 
 
 @app.route("/for_login", methods=['GET', 'POST'])
@@ -49,7 +52,15 @@ def for_login():
         first_date = first_date + ' ' + '00:00:00'
         last_date = last_date + ' ' + '00:00:00'
         rows = for_login_func(login, first_date, last_date)
-        return render_template('good_calc_login.html', rows=rows, login=login)
+        return render_template('good_calc_login.html', rows=rows,
+                               login=login, first_date=first_date,
+                               last_date=last_date)
+
+
+@app.route("/new_table", methods=['GET'])
+def new_table():
+    if request.method == 'GET':
+        return render_template('new_table.html')
 
 
 if __name__ == "__main__":
